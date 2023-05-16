@@ -54,7 +54,7 @@ int main() {
         std::string request_line = request.substr(0, request.find("\r\n"));
         std::cout << "Request: " << request_line << std::endl;
 
-        std::string response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE html><html lang=\"ru\"><title>HTTP-Server</title><head><meta charset=\"UTF-8\"></head><body><h1>HTTP/1.1 200 OK</h1><h2>Host: localhost</h2><p>Content-Type: text/html</p><button onclick=\"clickme()\">Нажми на меня!</button><script type=\"text/javascript\">function clickme() {\n\tvar colors = [\'blue\', \'grey\', \'black\', \'white\', \'red\', \'green\', \'#aaa\', \'#FFAACC\', \'rgb(122,111,110)\'];\n\tdocument.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];\n\talert(\"Цвет страницы будет изменён! (или, если повезёт, на тот же, что и сейчас)\");\n}</script></body></html>";
+        std::string response = "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\n\r\n<!DOCTYPE html><html lang=\"ru\"><title>HTTP-Server</title><head><meta charset=\"UTF-8\"></head><body><h1>HTTP/1.1 200 OK</h1><h2>Host: localhost</h2><p>Content-Type: text/html</p><button onclick=\"clickme()\">Click me!</button><script type=\"text/javascript\">function clickme() {\n\tvar colors = [\'blue\', \'grey\', \'black\', \'white\', \'red\', \'green\', \'#aaa\', \'#FFAACC\', \'rgb(122,111,110)\'];\n\tdocument.body.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];\n\talert(\"Page color will be changed! (or, if you are lucky, the same one as now)\");\n}</script></body></html>";
 
         int bytes_sent = send(client_socket, response.c_str(), response.length(), 0);
         if (bytes_sent == -1) {
